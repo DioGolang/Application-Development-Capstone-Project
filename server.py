@@ -1,7 +1,20 @@
+import requests
 from flask import Flask
 
 app = Flask(__name__)
 
+# @app.route('/')
+# def hello_world():
+# 	course = request.args['course']
+# 	rating = request.args.get('rating')
+# 	return {"message": f"{course} with rating {rating} has been added"}
+
 @app.route('/')
-def hello_world():
-	return {"message": "Hello World!"}
+def get_author():
+	res = requests.get('https://openlibrary.org/search/authors.json?q=Michael Crichton')
+	if res.status_code == 200:
+		return { "message": res.json()}
+	elif res.status_code == 404:
+		return {"message": "Author not found"}, 404
+	else:
+		return {"message": "Something went wrong"}, 500
