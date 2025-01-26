@@ -19,8 +19,9 @@ app = Flask(__name__)
 # 	else:
 # 		return {"message": "Something went wrong"}, 500
 
-# @app.route('/')
-# def get_author():
+# python3 -m pip install pymongo
+# python3 mongo_connect.py
+
 
 @app.route('/')
 def get_author(isbn):
