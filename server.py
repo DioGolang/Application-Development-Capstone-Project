@@ -19,6 +19,9 @@ app = Flask(__name__)
 # 	else:
 # 		return {"message": "Something went wrong"}, 500
 
+# @app.route('/')
+# def get_author():
+
 @app.route('/')
 def get_author(isbn):
 	res = requests.get(f'https://openlibrary.org/isbn/{escape(isbn)}.json')
